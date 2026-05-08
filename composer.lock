@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc7a18aa7aa2c8146635701f13fed9e5",
+    "content-hash": "5fa693ea94ec57d06aaee831ce8c0c11",
     "packages": [],
     "packages-dev": [
         {
@@ -261,16 +261,16 @@
         },
         {
             "name": "olcaytaner/morphologicalanalysis",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php.git",
-                "reference": "0b69ff8e7eea09ead12385584885441af06aeeb0"
+                "reference": "5fd27b3e18432ea7d84470a170d6ac85bdd4de4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StarlangSoftware/TurkishMorphologicalAnalysis-Php/zipball/0b69ff8e7eea09ead12385584885441af06aeeb0",
-                "reference": "0b69ff8e7eea09ead12385584885441af06aeeb0",
+                "url": "https://api.github.com/repos/StarlangSoftware/TurkishMorphologicalAnalysis-Php/zipball/5fd27b3e18432ea7d84470a170d6ac85bdd4de4c",
+                "reference": "5fd27b3e18432ea7d84470a170d6ac85bdd4de4c",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
             "require-dev": {
                 "olcaytaner/corpus": "1.0.0",
                 "olcaytaner/datastructure": "1.0.1",
-                "olcaytaner/dictionary": "1.0.0",
+                "olcaytaner/dictionary": "1.0.3",
                 "olcaytaner/ngram": "1.0.0",
                 "olcaytaner/util": "1.0.2",
                 "olcaytaner/xmlparser": "1.0.1",
@@ -306,9 +306,9 @@
             "description": "Morphological analysis library",
             "support": {
                 "issues": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/issues",
-                "source": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/tree/1.0.1"
+                "source": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/tree/1.0.3"
             },
-            "time": "2025-10-11T09:45:20+00:00"
+            "time": "2026-05-08T18:22:53+00:00"
         },
         {
             "name": "olcaytaner/ngram",

@@ -129,12 +129,14 @@ class NGramSpellChecker extends SimpleSpellChecker
                 $previousRoot = $this->checkAnalysisAndSetRootForWordAtIndex($result, $result->wordCount() - 1);
                 $root = $nextRoot;
                 $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
+                $i++;
                 continue;
             }
             if ($this->forcedBackwardMergeCheck($word, $result, $previousWord) || $this->forcedSuffixMergeCheck($word, $result, $previousWord)) {
                 $previousRoot = $this->checkAnalysisAndSetRootForWordAtIndex($result, $result->wordCount() - 1);
                 $root = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 1);
                 $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
+                $i++;
                 continue;
             }
             if ($this->forcedForwardMergeCheck($word, $result, $nextWord) || $this->forcedHyphenMergeCheck($word, $result, $previousWord, $nextWord)) {
@@ -142,12 +144,14 @@ class NGramSpellChecker extends SimpleSpellChecker
                 $previousRoot = $this->checkAnalysisAndSetRootForWordAtIndex($result, $result->wordCount() - 1);
                 $root = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 1);
                 $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
+                $i++;
                 continue;
             }
             if ($this->forcedSplitCheck($word, $result) || $this->forcedShortcutSplitCheck($word, $result)) {
                 $previousRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $result->wordCount() - 1);
                 $root = $nextRoot;
                 $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
+                $i++;
                 continue;
             }
             if ($this->parameter->suffixCheck()) {
@@ -155,6 +159,7 @@ class NGramSpellChecker extends SimpleSpellChecker
                     $previousRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $result->wordCount() - 1);
                     $root = $nextRoot;
                     $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
+                    $i++;
                     continue;
                 }
             }

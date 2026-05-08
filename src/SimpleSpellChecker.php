@@ -192,7 +192,7 @@ class SimpleSpellChecker extends SpellChecker
      */
     protected function loadDictionaries(): void
     {
-        $fh = fopen("merged.txt", 'r');
+        $fh = fopen("../merged.txt", 'r');
         while ($line = fgets($fh)) {
             $list = explode(" ", trim($line));
             if (count($list) == 3) {
@@ -200,10 +200,10 @@ class SimpleSpellChecker extends SpellChecker
             }
         }
         fclose($fh);
-        $fh = fopen("split.txt", 'r');
+        $fh = fopen("../split.txt", 'r');
         while ($line = fgets($fh)) {
-            $word = mb_substr($line, 0, strpos($line, ' '));
-            $result = mb_substr($line, strpos($line, ' ') + 1);
+            $word = trim(mb_substr($line, 0, mb_strpos($line, ' ')));
+            $result = trim(mb_substr($line, mb_strpos($line, ' ') + 1));
             $this->splitWords[$word] = $result;
         }
         fclose($fh);
@@ -238,8 +238,7 @@ class SimpleSpellChecker extends SpellChecker
             }
             if (str_contains(
                 TurkishLanguage::$LETTERS,
-                mb_substr($word, $i, 1) || str_contains("qwx", mb_substr($word, $i, 1))
-            )) {
+                mb_substr($word, $i, 1)) || str_contains("qwx", mb_substr($word, $i, 1))) {
                 $deleted = new Candidate(mb_substr($word, 0, $i) . mb_substr($word, $i + 1), Operator::SPELL_CHECK);
                 if (preg_match("/\d+/", $deleted->getName())) {
                     $candidates[] = $deleted;
@@ -517,10 +516,10 @@ class SimpleSpellChecker extends SpellChecker
      *
      * @param Word $word the {@link Word} to check for merge
      * @param Sentence $result the {@link Sentence} that the word belongs to
-     * @param Word $previousWord the preceding {@link Word} of the given {@link Word}
+     * @param Word|null $previousWord the preceding {@link Word} of the given {@link Word}
      * @return bool true if the word was merged, false otherwise
      */
-    protected function forcedSuffixMergeCheck(Word $word, Sentence $result, Word $previousWord): bool
+    protected function forcedSuffixMergeCheck(Word $word, Sentence $result, ?Word $previousWord): bool
     {
         $liList = ["li", "lı", "lu", "lü"];
         $likList = ["lik", "lık", "luk", "lük"];
@@ -562,11 +561,11 @@ class SimpleSpellChecker extends SpellChecker
      *
      * @param Word $word current {@link Word}
      * @param Sentence $result the {@link Sentence} that the word belongs to
-     * @param Word $previousWord the {@link Word} before current word
-     * @param Word $nextWord the {@link Word} after current word
+     * @param Word|null $previousWord the {@link Word} before current word
+     * @param Word|null $nextWord the {@link Word} after current word
      * @return bool true if merge is valid, false otherwise
      */
-    protected function forcedHyphenMergeCheck(Word $word, Sentence $result, Word $previousWord, Word $nextWord): bool
+    protected function forcedHyphenMergeCheck(Word $word, Sentence $result, ?Word $previousWord, ?Word $nextWord): bool
     {
         if ($word->getName() == "-" || $word->getName() == "–" || $word->getName() == "—") {
             if (preg_match("/[a-zA-ZçöğüşıÇÖĞÜŞİ]+/", $previousWord->getName()) && preg_match(
@@ -690,11 +689,11 @@ class SimpleSpellChecker extends SpellChecker
      */
     private function getSplitPair(Word $word): array
     {
-        $key = " ";
+        $key = "";
         $j = 0;
         while ($j < mb_strlen($word->getName())) {
-            if (preg_match("/[0-9]/", mb_substr($word->getName(), $j, 0)) || mb_substr($word->getName(), $j, 0) == "." || mb_substr($word->getName(), $j, 0) == ",") {
-                $key .= mb_substr($word->getName(), $j, 0);
+            if (preg_match("/[0-9]/", mb_substr($word->getName(), $j, 1)) || mb_substr($word->getName(), $j, 0) == "." || mb_substr($word->getName(), $j, 0) == ",") {
+                $key .= mb_substr($word->getName(), $j, 1);
             } else {
                 break;
             }
@@ -730,13 +729,16 @@ class SimpleSpellChecker extends SpellChecker
                 $nextWord = $sentence->getWord($i + 1);
             }
             if ($this->forcedMisspellCheck($word, $result) || $this->forcedBackwardMergeCheck($word, $result, $previousWord) || $this->forcedSuffixMergeCheck($word, $result, $previousWord)) {
+                $i++;
                 continue;
             }
             if ($this->forcedForwardMergeCheck($word, $result, $nextWord) || $this->forcedHyphenMergeCheck($word, $result, $previousWord, $nextWord)) {
                 $i++;
+                $i++;
                 continue;
             }
             if ($this->forcedSplitCheck($word, $result) || $this->forcedShortcutSplitCheck($word, $result) || $this->forcedDeDaSplitCheck($word, $result) || $this->forcedQuestionSuffixSplitCheck($word, $result) || $this->forcedSuffixSplitCheck($word, $result)) {
+                $i++;
                 continue;
             }
             $fsmParseListFirst = $this->fsm->morphologicalAnalysis($word->getName());
@@ -761,6 +763,7 @@ class SimpleSpellChecker extends SpellChecker
                     }
                     if ($candidates[$randomCandidate]->getOperator() == Operator::SPLIT) {
                         $this->addSplitWords($candidates[$randomCandidate]->getName(), $result);
+                        $i++;
                         continue;
                     }
                 } else {
