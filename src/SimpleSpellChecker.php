@@ -692,7 +692,7 @@ class SimpleSpellChecker extends SpellChecker
         $key = "";
         $j = 0;
         while ($j < mb_strlen($word->getName())) {
-            if (preg_match("/[0-9]/", mb_substr($word->getName(), $j, 1)) || mb_substr($word->getName(), $j, 0) == "." || mb_substr($word->getName(), $j, 0) == ",") {
+            if (preg_match("/[0-9]/", mb_substr($word->getName(), $j, 1)) || mb_substr($word->getName(), $j, 1) == "." || mb_substr($word->getName(), $j, 1) == ",") {
                 $key .= mb_substr($word->getName(), $j, 1);
             } else {
                 break;

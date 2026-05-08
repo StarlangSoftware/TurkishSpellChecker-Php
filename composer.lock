@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fa693ea94ec57d06aaee831ce8c0c11",
+    "content-hash": "b52f9b95f81b6a93c38ba386c32f33b4",
     "packages": [],
     "packages-dev": [
         {
@@ -261,16 +261,16 @@
         },
         {
             "name": "olcaytaner/morphologicalanalysis",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php.git",
-                "reference": "5fd27b3e18432ea7d84470a170d6ac85bdd4de4c"
+                "reference": "2ed42da256c0a982031fcb9a93a58569ef11d875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StarlangSoftware/TurkishMorphologicalAnalysis-Php/zipball/5fd27b3e18432ea7d84470a170d6ac85bdd4de4c",
-                "reference": "5fd27b3e18432ea7d84470a170d6ac85bdd4de4c",
+                "url": "https://api.github.com/repos/StarlangSoftware/TurkishMorphologicalAnalysis-Php/zipball/2ed42da256c0a982031fcb9a93a58569ef11d875",
+                "reference": "2ed42da256c0a982031fcb9a93a58569ef11d875",
                 "shasum": ""
             },
             "require": {
@@ -306,9 +306,9 @@
             "description": "Morphological analysis library",
             "support": {
                 "issues": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/issues",
-                "source": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/tree/1.0.3"
+                "source": "https://github.com/StarlangSoftware/TurkishMorphologicalAnalysis-Php/tree/1.0.4"
             },
-            "time": "2026-05-08T18:22:53+00:00"
+            "time": "2026-05-08T19:35:53+00:00"
         },
         {
             "name": "olcaytaner/ngram",

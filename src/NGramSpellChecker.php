@@ -167,9 +167,9 @@ class NGramSpellChecker extends SimpleSpellChecker
                 $candidates = [];
                 if ($root === null) {
                     $candidates = $this->candidateList($word, $sentence);
-                    array_merge($candidates, $this->splitCandidatesList($word));
+                    $candidates = array_merge($candidates, $this->splitCandidatesList($word));
                 }
-                array_merge($candidates, $this->mergedCandidatesList($previousWord, $word, $nextWord));
+                $candidates = array_merge($candidates, $this->mergedCandidatesList($previousWord, $word, $nextWord));
                 $bestCandidate = new Candidate($word->getName(), Operator::NO_CHANGE);
                 $bestRoot = $word;
                 $bestProbability = $this->parameter->getThreshold();
@@ -230,7 +230,7 @@ class NGramSpellChecker extends SimpleSpellChecker
             }
             $previousRoot = $root;
             $root = $nextRoot;
-            $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($result, $i + 2);
+            $nextRoot = $this->checkAnalysisAndSetRootForWordAtIndex($sentence, $i + 2);
             $i++;
         }
         return $result;
