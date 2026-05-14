@@ -1,3 +1,23 @@
+Turkish Spell Checker
+============
+
+This tool is a spelling checker for Modern Turkish. It detects spelling errors and corrects them appropriately, through its list of misspellings and matching to the Turkish dictionary.
+
+Simple Web Interface
+============
+
+[Link 1](http://104.247.163.162/nlptoolkit/turkish-spell-checker.html) [Link 2](https://starlangsoftware.github.io/nlptoolkit-web-simple/turkish-spell-checker.html)
+
+Video Lectures
+============
+
+[<img src="https://github.com/StarlangSoftware/TurkishSpellChecker/blob/master/video.jpg" width="50%">](https://youtu.be/wKwTKv6Jlo0)
+
+For Developers
+============
+
+You can also see [Cython](https://github.com/starlangsoftware/TurkishSpellChecker-Cy), [Python](https://github.com/starlangsoftware/TurkishSpellChecker-Py), [Java](https://github.com/starlangsoftware/TurkishSpellChecker), [C++](https://github.com/starlangsoftware/TurkishSpellChecker-CPP), [C](https://github.com/starlangsoftware/TurkishSpellChecker-C), [Swift](https://github.com/starlangsoftware/TurkishSpellChecker-Swift), [Js](https://github.com/starlangsoftware/TurkishSpellChecker-Js), or [C#](https://github.com/starlangsoftware/TurkishSpellChecker-CS) repository.
+
 For Contibutors
 ============
 
